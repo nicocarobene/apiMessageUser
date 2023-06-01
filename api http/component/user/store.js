@@ -12,3 +12,16 @@ export async function addUserDB(name, user, password){
 export const  listOfUserDB =()=>{
     return User.find()
 }
+
+export async function findUserDB ({user,password}){
+    const userFind = await User.findOne({user}).populate('message')
+
+    const passwordCorrect = userFind === null
+    ? false
+    : await bcrypt.compare(password, userFind.passwordHash)
+
+    if(!user || !passwordCorrect){
+        throw new Error('Invalid user or password')
+    }
+    return userFind
+}

@@ -18,3 +18,5 @@ routes(app)
 
 const serverHTTP = server.listen(PORT,()=>console.log(`Server listten in PORT ${PORT}`))
 connectWS(serverHTTP)
+
+socket.io.on('connection',(socket)=>{console.log('Usuario connected', socket.id)})

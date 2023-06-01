@@ -1,17 +1,25 @@
 import express from 'express'
 import multer from 'multer'
 import {success, error} from '../../network/response.js'
-import { addUser } from './controller.js'
+import { addUser, findUser } from './controller.js'
 import { listOfUserDB } from './store.js'
 
 const user = express.Router()
+
 const upload= multer({
     dest: 'uploads/'
 })
 user.get('/',(req,resp)=>{
     listOfUserDB()
-      .then(users=>success(req, resp, users, 200))
-      .catch(e=>error(req,resp,'Informacion invalidad', 500, 'e'))
+    .then(users=>success(req, resp, users, 200))
+    .catch(e=>error(req,resp,'Informacion invalidad', 500, 'e'))
+})
+
+user.post('/login',(req,resp)=>{
+    const {user,password} =req.body
+    findUser({user,password})
+    .then(user=>success(req, resp, user, 200))
+    .catch(e=>error(req,resp,'Informacion invalidad', 500, 'e'))
 })
 
 user.post('/', upload.single('file'), (req,resp)=>{
