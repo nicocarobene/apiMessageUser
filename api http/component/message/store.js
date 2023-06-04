@@ -1,8 +1,25 @@
+import Chat from "../chat/model.js"
+import User from "../user/model.js"
 import Model from "./model.js"
 
-export function Add(fullMessage){
+export async function Add(fullMessage){
+    const{ chat, user }= fullMessage
+
     const myMessage= new Model(fullMessage)
-    myMessage.save()
+    const userDB= await  User.findById({_id: user})
+    const chatDB= await Chat.findById({_id: chat})
+    const chatIsAlreadyExist= userDB.chat.some(chat=> chat.toString() === chatDB._id.toString())
+    if(!chatIsAlreadyExist){
+        userDB.chat= userDB.chat.concat(chatDB._id)
+    }
+
+    userDB.message= userDB.message.concat(myMessage._id)
+    chatDB.message= userDB.message.concat(myMessage._id)
+
+    await myMessage.save()
+    await userDB.save()
+    await chatDB.save()
+    return myMessage
 }
 
 export async function List(chat){

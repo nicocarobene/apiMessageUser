@@ -2,7 +2,7 @@ POST http://localhost:3060/user
 Content-Type: application/json
 
 {
-    "name": "Nicolas Barrera",
+    "name": "Nicolas Carobene",
     "user": "Nico97",
     "password": "lamidupassword"
 }

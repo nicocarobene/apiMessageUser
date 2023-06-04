@@ -3,17 +3,22 @@ import { Schema, model } from "mongoose";
 const mySchema= new Schema({
     chat: {
         type: Schema.Types.ObjectId,
-        ref: 'Chats'
+        ref: 'Chats',
+        required:true
     },
     user: {
         type: Schema.Types.ObjectId,
-        ref: 'Users'
+        ref: 'Users',
+        required: true
     },
     message: {
         type: String,
         required: true,
     },
-    date: Date,
+    date: {
+        type:Date,
+        required:true
+    },
     file: String
 }, {
     timestamps: true

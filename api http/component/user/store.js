@@ -14,7 +14,7 @@ export const  listOfUserDB =()=>{
 }
 
 export async function findUserDB ({user,password}){
-    const userFind = await User.findOne({user}).populate('message')
+    const userFind = await User.findOne({user})
 
     const passwordCorrect = userFind === null
     ? false

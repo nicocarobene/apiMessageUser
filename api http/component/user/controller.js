@@ -19,18 +19,21 @@ export const findUser =({user,password})=>{
         }
         findUserDB({user,password})
         .then(userFind=>{
+            console.log({userFind})
             const tokenForUser= {
                 id: userFind._id,
                 username: userFind.username
             }
+            console.log(userFind.user)
             const token= jwt.sign(tokenForUser, SING,{
                 expiresIn: 60*60*24*7
             })
             resolve({
+                id: userFind._id,
                 token,
-                user: userFind.username,
-                message: [],
-                chat:[]
+                user: userFind.user,
+                message: userFind.message,
+                chat:userFind.chat
             })
         })
         .catch(e=>reject(e))

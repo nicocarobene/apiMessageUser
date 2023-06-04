@@ -5,10 +5,15 @@ const userSchema= new Schema({
         type: String,
         required: true,
     },
+    img: String,
     user: {
         type: String,
         required: true,
     },
+    chat: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Chats'
+    }],
     message:[{
         type: Schema.Types.ObjectId,
         ref: 'Messages'

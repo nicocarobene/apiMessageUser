@@ -4,6 +4,10 @@ const chatSchema= new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Users'
     }],
+    message: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Messages'
+    }]
 })
 
 const Chat= new model('Chats', chatSchema)

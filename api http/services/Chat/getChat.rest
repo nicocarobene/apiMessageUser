@@ -1,1 +1,2 @@
-GET http://localhost:3060/chat/6471ea18b01b6c1db6a6b9a2
+GET http://localhost:3060/chat/647b3084fd0c1e5556ce821b
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0N2IzMDdjZmQwYzFlNTU1NmNlODIxOSIsImlhdCI6MTY4NTc5NDk2NywiZXhwIjoxNjg2Mzk5NzY3fQ.Ho_I2TVXYe-GXIeh5QsKe7PAwPejPfoJ7zolCx6A6ro

@@ -1,11 +1,14 @@
 POST http://localhost:3060/message
 Content-Type: application/json
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0N2IzMDdjZmQwYzFlNTU1NmNlODIxOSIsImlhdCI6MTY4NTc5NDk2NywiZXhwIjoxNjg2Mzk5NzY3fQ.Ho_I2TVXYe-GXIeh5QsKe7PAwPejPfoJ7zolCx6A6ro
 
 {
-    "user": "6471e9d6b01b6c1db6a6b99d",
-    "chat": "6471ea18b01b6c1db6a6b9a2",
-    "message": "probando WS2"
+    "chat": "647c5dc9b1d16ba8bcc55c43",
+    "message": "integrando DB con WS2"
 }
+
+
+
 ###
 PATCH http://localhost:3060/message/646f68376121457155731e70
 Content-Type: application/json

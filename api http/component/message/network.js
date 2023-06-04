@@ -3,6 +3,7 @@ import multer from 'multer'
 import { addMessage, deleteMessageUser, getMessage, updateMessage } from './controller.js'
 import {success, error} from '../../network/response.js'
 import { config } from 'dotenv'
+import { LoginUser } from '../Middleware/LoginUser.js'
 
 const message = express.Router()
 
@@ -21,10 +22,11 @@ message.get('/',(req,resp)=>{
     })
 })
 
-message.post('/',upload.single('file') ,(req,resp)=>{
+message.post('/', LoginUser , upload.single('file'),(req,resp)=>{
     const {file}= req
-    const { user, message, chat}= req.body
-    addMessage(user, message, chat, file)
+    const {userID, username}= req
+    const { message, chat }= req.body
+    addMessage(userID, message, chat, file)
     .then((fullMessage)=>{
         success(req, resp, fullMessage, 201);
     })
